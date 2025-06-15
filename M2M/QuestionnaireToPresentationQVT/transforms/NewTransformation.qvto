@@ -1,0 +1,64 @@
+modeltype Questionnaire uses 'http://www.example.org/projet_IDM';
+modeltype PresentationQCM uses 'http://www.example.org/meta2';
+//modeltype Questionnaire uses 'platform:/resource/Projet_IDM/model/projet_IDM.ecore';
+//modeltype PresentationQCM uses 'platform:/resource/Meta2/model/meta2.ecore';
+
+transformation NewTransformation(in source : Questionnaire, out target : PresentationQCM);
+
+main() {
+    log('Transformation started');
+    var questionnaires := source.objectsOfType(Questionnaire::Questionnaire);
+    log('Found ' + questionnaires->size().toString() + ' questionnaire(s)');
+    
+    questionnaires->forEach(q) {
+        log('Processing questionnaire: ' + q.nom);
+        q.map toQCM();
+    };
+    
+    log('Transformation completed');
+}
+
+mapping Questionnaire::Questionnaire::toQCM() : PresentationQCM::QCM {
+    log('Creating QCM for questionnaire: ' + self.nom);
+    titre := self.nom;
+    estMelange := self.melangeQuestions;
+    pageqcm := self.question->map toPageQCM();
+    
+    -- Ajouter un résultat initialisé pour le QCM
+    var resultat := object PresentationQCM::ResultatQCM {
+        score := 0;
+        scoreTotal := self.question->size() * 5;  -- Score total basé sur la difficulté
+    };
+    
+    log('Created QCM with ' + pageqcm->size().toString() + ' pages');
+}
+
+mapping Questionnaire::Question::toPageQCM() : PresentationQCM::PageQCM {
+    log('Creating PageQCM for question: ' + self.texte);
+    titre := 'Page ' + self.texte;
+    navRetour := false;
+    presentationQuestion := self.map toQuestionPresentation();
+    
+    log('Created PageQCM');
+    presentationQuestion;  // Les PresentationQuestions sont ajoutées aux PageQCM dans la transformation principale
+}
+
+mapping Questionnaire::Question::toQuestionPresentation() : PresentationQCM::PresentationQuestion {
+    log('Creating PresentationQuestion for: ' + self.texte);
+    texteQuestion := self.texte;
+    difficulte := self.difficulte;
+    estMelangee := if self.type = 'MULTIPLE' then true else false endif;
+    option := self.proposition->map toOption();
+    
+	etiquette := self.etiquette->first().nom;
+    
+    log('Created PresentationQuestion with ' + option->size().toString() + ' options');
+    option;  -- Les options sont ajoutées aux PresentationQuestions dans la transformation principale
+}
+
+mapping Questionnaire::Proposition::toOption() : PresentationQCM::Option {
+    log('Creating Option: ' + self.texte);
+    texteOption := self.texte;
+    estCorrecte := self.estCorrecte;
+    texteOption;  // L'option est ajoutée à la PresentationQuestion
+}

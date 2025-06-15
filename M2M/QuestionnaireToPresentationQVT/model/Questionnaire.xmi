@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projet_IDM:Questionnaire
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:projet_IDM="http://www.example.org/projet_IDM"
+    xsi:schemaLocation="http://www.example.org/projet_IDM ../metamodels/projet_IDM.ecore">
+  <question
+      texte="Quelle est la capitale de la France ?"
+      type="SIMPLE"
+      difficulte="2">
+    <proposition
+        texte="Paris"
+        estCorrecte="true"/>
+    <proposition
+        texte="Berlin"/>
+    <etiquette
+        nom="Geographie"/>
+  </question>
+  <question
+      texte="Combien fait 2 + 2 ?"
+      type="Simple"
+      difficulte="1">
+    <proposition
+        texte="2"/>
+    <proposition
+        texte="4"
+        estCorrecte="true"/>
+    <proposition
+        texte="9"/>
+    <etiquette
+        nom="Math"/>
+  </question>
+  <question
+      texte="Quel est le plus grand ocean de la Terre ?"
+      type="SIMPLE"
+      difficulte="3">
+    <proposition
+        texte="Atlantique"/>
+    <proposition
+        texte="Pacifique"
+        estCorrecte="true"/>
+    <proposition
+        texte="Indien"/>
+    <etiquette
+        nom="Geographie"/>
+  </question>
+  <question
+      texte="Qui a ecrit 'Romeo et Juliette' ?"
+      type="SIMPLE"
+      difficulte="4">
+    <proposition
+        texte="Shakespeare"
+        estCorrecte="true"/>
+    <proposition
+        texte="Dickens"/>
+    <proposition
+        texte="Austen"/>
+    <etiquette
+        nom="Litterature"/>
+  </question>
+  <question
+      texte="Quelle est la plante connue sous le nom de 'Plante rouge' ?"
+      type="SIMPLE"
+      difficulte="3">
+    <proposition
+        texte="Mars"
+        estCorrecte="true"/>
+    <proposition
+        texte="Terre"/>
+    <proposition
+        texte="Venus"/>
+    <etiquette
+        nom="Espace"/>
+  </question>
+</projet_IDM:Questionnaire>

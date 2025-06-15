@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:meta2="http://www.example.org/meta2" xsi:schemaLocation="http://www.example.org/meta2 ../metamodels/meta2.ecore">
+  <meta2:QCM>
+    <pageqcm titre="Page Quelle est la capitale de la France ?">
+      <presentationQuestion texteQuestion="Quelle est la capitale de la France ?" difficulte="2" etiquette="Geographie">
+        <option texteOption="Paris" estCorrecte="true"/>
+        <option texteOption="Berlin"/>
+      </presentationQuestion>
+    </pageqcm>
+    <pageqcm titre="Page Combien fait 2 + 2 ?">
+      <presentationQuestion texteQuestion="Combien fait 2 + 2 ?" difficulte="1" etiquette="Math">
+        <option texteOption="2"/>
+        <option texteOption="4" estCorrecte="true"/>
+        <option texteOption="9"/>
+      </presentationQuestion>
+    </pageqcm>
+    <pageqcm titre="Page Quel est le plus grand ocean de la Terre ?">
+      <presentationQuestion texteQuestion="Quel est le plus grand ocean de la Terre ?" difficulte="3" etiquette="Geographie">
+        <option texteOption="Atlantique"/>
+        <option texteOption="Pacifique" estCorrecte="true"/>
+        <option texteOption="Indien"/>
+      </presentationQuestion>
+    </pageqcm>
+    <pageqcm titre="Page Qui a ecrit 'Romeo et Juliette' ?">
+      <presentationQuestion texteQuestion="Qui a ecrit 'Romeo et Juliette' ?" difficulte="4" etiquette="Litterature">
+        <option texteOption="Shakespeare" estCorrecte="true"/>
+        <option texteOption="Dickens"/>
+        <option texteOption="Austen"/>
+      </presentationQuestion>
+    </pageqcm>
+    <pageqcm titre="Page Quelle est la plante connue sous le nom de 'Plante rouge' ?">
+      <presentationQuestion texteQuestion="Quelle est la plante connue sous le nom de 'Plante rouge' ?" difficulte="3" etiquette="Espace">
+        <option texteOption="Mars" estCorrecte="true"/>
+        <option texteOption="Terre"/>
+        <option texteOption="Venus"/>
+      </presentationQuestion>
+    </pageqcm>
+  </meta2:QCM>
+  <meta2:ResultatQCM scoreTotal="25"/>
+</xmi:XMI>
