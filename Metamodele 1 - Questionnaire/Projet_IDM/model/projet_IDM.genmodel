@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/Projet_IDM/src-gen" creationIcons="false" editDirectory="/Projet_IDM.edit/src-gen"
+    editorDirectory="/Projet_IDM.editor/src-gen" modelPluginID="Projet_IDM" modelName="Projet_IDM"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" codeFormatting="true"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="21.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>projet_IDM.ecore</foreignModel>
+  <testsDirectory xsi:nil="true"/>
+  <genPackages prefix="Projet_IDM" disposableProviderFactory="true" ecorePackage="projet_IDM.ecore#/">
+    <genClasses ecoreClass="projet_IDM.ecore#//Questionnaire">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute projet_IDM.ecore#//Questionnaire/nom"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute projet_IDM.ecore#//Questionnaire/melangeQuestions"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference projet_IDM.ecore#//Questionnaire/question"/>
+    </genClasses>
+    <genClasses ecoreClass="projet_IDM.ecore#//Question">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute projet_IDM.ecore#//Question/texte"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute projet_IDM.ecore#//Question/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute projet_IDM.ecore#//Question/difficulte"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference projet_IDM.ecore#//Question/proposition"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference projet_IDM.ecore#//Question/etiquette"/>
+    </genClasses>
+    <genClasses ecoreClass="projet_IDM.ecore#//Proposition">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute projet_IDM.ecore#//Proposition/texte"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute projet_IDM.ecore#//Proposition/estCorrecte"/>
+    </genClasses>
+    <genClasses ecoreClass="projet_IDM.ecore#//Etiquette">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute projet_IDM.ecore#//Etiquette/nom"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projet_IDM:Questionnaire
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:projet_IDM="http://www.example.org/projet_IDM"
+    xsi:schemaLocation="http://www.example.org/projet_IDM projet_IDM.ecore"
+    nom="Questionnaire">
+  <question
+      texte="Quelle est la capitale de la France ?"
+      type="SIMPLE"
+      difficulte="2">
+    <proposition
+        texte="Paris"
+        estCorrecte="true"/>
+    <proposition
+        texte="Londres"/>
+    <proposition
+        texte="Berlin"/>
+    <etiquette
+        nom="Géographie"/>
+  </question>
+  <question
+      texte="Combien fait 2 + 2 ?"
+      type="SIMPLE"
+      difficulte="1">
+    <proposition
+        texte="1"/>
+    <proposition
+        texte="3"/>
+    <proposition
+        texte="4"
+        estCorrecte="true"/>
+    <etiquette
+        nom="Mathématiques"/>
+  </question>
+  <question
+      texte="Quel est le plus grand océan de la Terre ?"
+      type="SIMPLE"
+      difficulte="3">
+    <proposition
+        texte="Océan Atlantique"/>
+    <proposition
+        texte="Océan Pacifique"
+        estCorrecte="true"/>
+    <proposition
+        texte="Océan Indien"/>
+    <etiquette
+        nom="Espace"/>
+  </question>
+  <question
+      texte="Quelles sont les couleurs primaires ?"
+      type="MULTIPLE"
+      difficulte="1">
+    <proposition
+        texte="Rouge"
+        estCorrecte="true"/>
+    <proposition
+        texte="Bleu"
+        estCorrecte="true"/>
+    <proposition
+        texte="Jaune"/>
+    <proposition
+        texte="Vert"/>
+    <etiquette
+        nom="Couleurs"/>
+  </question>
+  <question
+      texte="Quelle est la planète connue sous le nom de 'Planète rouge' ?"
+      type="MULTIPLE"
+      difficulte="4">
+    <proposition
+        texte="Mars"
+        estCorrecte="true"/>
+    <proposition
+        texte="Terre"/>
+    <proposition
+        texte="Vénus"/>
+    <proposition
+        texte="Uranus"/>
+    <etiquette
+        nom="Univers"/>
+  </question>
+</projet_IDM:Questionnaire>
