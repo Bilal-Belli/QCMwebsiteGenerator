@@ -1,0 +1,104 @@
+[comment encoding = UTF-8 /]
+[module generate('http://www.eclipse.org/emf/2002/Ecore', 'http://www.example.org/meta2')]
+
+
+[template public generateElement(qcm : QCM)]
+[comment @main/]
+
+[file (qcm.titre.replace(' ', '_') + '.html', false, 'UTF-8')]
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[qcm.titre/]</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>QCM: [if (qcm.titre <> null)][qcm.titre/][else]Sans titre[/if]</h1>
+        <p>Mélange: [if (qcm.estMelange)]Oui[else]Non[/if]</p>
+
+        [for (page : PageQCM | qcm.pageqcm)]
+        <div class="page card mt-3 d-none" id="page-[page.titre.replace(' ', '_')/]">
+            <div class="card-header">
+                <h2>[page.presentationQuestion.etiquette/]</h2>
+            </div>
+            <div class="card-body">
+                [if (page.navRetour)]<p>Navigation retour activée</p>[/if]
+
+                [for (question : PresentationQuestion | page.presentationQuestion)]
+					<div class="question mb-3">
+					    <h3>Question: [if (question.texteQuestion <> null)][question.texteQuestion/][else]Sans texte[/if]</h3>
+					    <p>Difficulté: [question.difficulte/]</p>
+					    <div class="options">
+					        [if (question.estMelangee)]
+					        <!-- Si estMelange est vrai, utiliser des cases à cocher -->
+					        [for (option : Option | question.option)]
+					        <div class="form-check">
+					            <input class="form-check-input" type="checkbox" id="[option.texteOption/]" name="[question.texteQuestion.replace(' ', '_')/]" value="[option.texteOption/]">
+					            <label class="form-check-label" for="[option.texteOption/]">[option.texteOption/]</label>
+					        </div>
+					        [/for]
+					        [else]
+					        <!-- Sinon, utiliser des boutons radio -->
+					        [for (option : Option | question.option)]
+					        <div class="form-check">
+					            <input class="form-check-input" type="radio" id="[option.texteOption/]" name="[question.texteQuestion.replace(' ', '_')/]" value="[option.texteOption/]">
+					            <label class="form-check-label" for="[option.texteOption/]">[option.texteOption/]</label>
+					        </div>
+					        [/for]
+					        [/if]
+					    </div>
+					</div>
+					[/for]
+
+            </div>
+        </div>
+        [/for]
+    </div>
+
+    <div class="mt-3 d-flex justify-content-between">
+        <button id="prev-button" onclick="navigate(-1)" class="btn btn-primary" style="display:none;">Précédent</button>
+        <button id="next-button" onclick="navigate(1)" class="btn btn-primary">Suivant</button>
+    </div>
+
+    <script src="[qcm.titre.replace(' ', '_') + '.js'/]"></script>
+</body>
+</html>
+[/file]
+
+[file (qcm.titre.replace(' ', '_') + '.js', false, 'UTF-8')]
+// JavaScript for QCM: [qcm.titre/]
+
+let currentPageIndex = 0;
+const pages = document.querySelectorAll('.page');
+
+function navigate(direction) {
+    // Masquer la page actuelle
+    pages['['/]currentPageIndex].classList.add('d-none');
+
+    // Mettre à jour l'index de la page
+    currentPageIndex += direction;
+
+    // Assurer que l'index reste dans les limites
+    if (currentPageIndex < 0) currentPageIndex = 0;
+    if (currentPageIndex >= pages.length) currentPageIndex = pages.length - 1;
+
+    // Afficher la nouvelle page
+    pages['['/]currentPageIndex].classList.remove('d-none');
+
+    // Gérer la visibilité des boutons
+    document.getElementById('prev-button').style.display = currentPageIndex === 0 ? 'none' : 'inline-block';
+    document.getElementById('next-button').style.display = currentPageIndex === pages.length - 1 ? 'none' : 'inline-block';
+}
+
+// Initialisation pour afficher la première page
+document.addEventListener('DOMContentLoaded', () => {
+    if (pages.length > 0) {
+        pages['['/]0].classList.remove('d-none');
+    }
+});
+[/file]
+[/template]
