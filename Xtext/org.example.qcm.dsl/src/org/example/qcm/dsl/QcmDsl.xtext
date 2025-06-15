@@ -1,0 +1,27 @@
+grammar org.example.qcm.dsl.QcmDsl with org.eclipse.xtext.common.Terminals
+
+generate qcmDsl "http://www.example.org/qcm/dsl"
+
+Questionnaire:
+    'questionnaire' name=ID '{'
+        ('melange' '=' melange=BOOLEAN)?
+        questions+=Question*
+    '}';
+
+Question:
+    'question' texte=STRING '{'
+        'type' '=' type=('SIMPLE' | 'MULTIPLE')
+        'difficulte' '=' difficulte=INT
+        propositions+=Proposition+
+        ('etiquettes' '=' etiquettes+=Etiquette (',' etiquettes+=Etiquette)*)?
+    '}';
+
+Proposition:
+    texte=STRING ('correcte' '=' estCorrecte=BOOLEAN)?;
+
+Etiquette:
+    nom=ID;
+
+BOOLEAN:
+    'true' | 'false';
+	
